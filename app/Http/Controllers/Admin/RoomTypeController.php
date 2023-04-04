@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\RoomType;
+use App\Models\Roomtypeimage;
 use Illuminate\Http\Request;
 
 class RoomTypeController extends Controller
@@ -37,11 +38,24 @@ class RoomTypeController extends Controller
      */
     public function store(Request $request)
     {
-        RoomType::create([
+        $data = RoomType::create([
             'title' => $request->title,
             'detail' => $request->detail,
             'price' => $request->price
         ]);
+
+        if($request->hasFile('imgs')) {
+           foreach($request->imgs as $img) {
+                $imageName = time().'.'.$img->extension();
+                $img->move(public_path('images'), $imageName);   
+                Roomtypeimage::create([
+                    'room_type_id' => $data->id,
+                    'img_src' => $imageName,
+                    'img_alt' => $data->title
+                ]);
+           }
+         }
+       
         return redirect('admin/roomtype/create')->with('success', 'Data has been added.');
     }
 

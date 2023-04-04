@@ -16,19 +16,24 @@
             @if (Session::has('success'))
                 <p class="text-success">{{ session('success') }}</p>
             @endif
-            <form action="{{ url('/admin/roomtype') }}" method="POST">
+            <form action="{{ url('/admin/roomtype') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Title</label>
-                  <input type="text" name="title" class="form-control">
+                  <input type="text" name="title" required class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Price</label>
-                    <input type="number" name="price" class="form-control">
+                    <input type="number" name="price" required class="form-control">
                 </div>
                 <div class="mb-3">
                   <label for="" class="form-label">Detail</label>
-                <textarea name="detail" id="" cols="5" rows="5" class="form-control"></textarea>
+                <textarea name="detail" id="" cols="5" required rows="5" class="form-control"></textarea>
+                </div>
+
+                <div class="mb-3">
+                  <label for="" class="form-label">Galery</label>
+                  <input type="file" name="imgs[]" multiple class="form-control">
                 </div>
     
                 <button type="submit" class="btn btn-primary">Submit</button>
