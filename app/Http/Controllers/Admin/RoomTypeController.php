@@ -98,6 +98,18 @@ class RoomTypeController extends Controller
             'price' => $request->price
         ]);
 
+        if($request->hasFile('imgs')) {
+            foreach($request->imgs as $img) {
+                 $imageName = time().'.'.$img->extension();
+                 $img->move(public_path('images'), $imageName);   
+                 Roomtypeimage::create([
+                     'room_type_id' => $update->id,
+                     'img_src' => $imageName,
+                     'img_alt' => $update->title
+                ]);
+            }
+          }
+
         return redirect('admin/roomtype')->with('success', 'Data has been updated.');
     }
 
@@ -111,5 +123,13 @@ class RoomTypeController extends Controller
     {
         RoomType::where('id', $id)->delete();
         return redirect('admin/roomtype')->with('success', 'Data has been deleted.');
+    }
+
+    public function delete_image($img_id) {
+        Roomtypeimage::find($img_id)->delete($img_id);
+  
+        return response()->json([
+            'success' => 'Record deleted successfully!'
+        ]);
     }
 }

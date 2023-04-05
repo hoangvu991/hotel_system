@@ -104,6 +104,34 @@
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa fa-child"></i>
+                    <span>Department</span>
+                </a>
+                <div id="collapseTwo4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ url('admin/department/create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ url('admin/department') }}">View All</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa fa-users"></i>
+                    <span>Staff</span>
+                </a>
+                <div id="collapseTwo5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ url('admin/staff/create') }}">Add New</a>
+                        <a class="collapse-item" href="{{ url('admin/staff') }}">View All</a>
+                    </div>
+                </div>
+            </li>
+
         </ul>
         <!-- End of Sidebar -->
 
@@ -358,7 +386,8 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('/dashboard/js/sb-admin-2.min.js') }}"></script>
-
+    
+    @yield('scripts')
 </body>
 
 </html>

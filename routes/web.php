@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\RoomTypeController;
+use App\Http\Controllers\Admin\StaffController;
+use App\Http\Controllers\Admin\StaffDepartment;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,3 +51,17 @@ Route::get('admin/room/{id}/delete', [RoomController::class, 'destroy']);
 Route::resource('admin/customer', CustomerController::class);
 
 Route::get('admin/customer/{id}/delete', [CustomerController::class, 'destroy']);
+
+Route::get('admin/roomtypeimage/delete/{id}', [RoomTypeController::class, 'delete_image']);
+
+
+//Department
+
+Route::resource('admin/department', StaffDepartment::class);
+Route::get('admin/department/{id}/delete', [StaffDepartment::class, 'destroy']);
+
+//Staff
+
+Route::resource('admin/staff', StaffController::class);
+Route::get('admin/staff/{id}/delete', [StaffController::class, 'destroy']);
+
