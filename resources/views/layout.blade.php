@@ -132,6 +132,19 @@
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fa fa-users"></i>
+                    <span>Booking</span>
+                </a>
+                <div id="collapseTwo6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="{{ url('admin/booking/create') }}">Add New</a>
+                    </div>
+                </div>
+            </li>
+
         </ul>
         <!-- End of Sidebar -->
 

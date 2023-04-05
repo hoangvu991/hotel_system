@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\BookingController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\RoomTypeController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\StaffDepartment;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,9 +35,7 @@ Route::get('/admin/logout', [AdminController::class, 'logout']);
 
 //Dashboard
 
-Route::get('/admin', function () {
-    return view('dashboard');
-});
+Route::get('/admin',[DashboardController::class, 'index']);
 
 //Room type
 Route::resource('admin/roomtype', RoomTypeController::class);
@@ -69,6 +69,14 @@ Route::post('admin/staff/payment/{id}', [StaffController::class, 'save_payment']
 
 Route::get('admin/staff/payment/{id}', [StaffController::class, 'all_payment']);
 Route::get('admin/staff/payment/{id}/delete', [StaffController::class, 'delete_payment']);
+
+//Bookings
+Route::resource('admin/booking', BookingController::class);
+Route::get('admin/booking/{id}/delete', [BookingController::class, 'destroy']);
+Route::get('admin/booking/available/{id}', [BookingController::class, 'available_room']);
+
+
+
 
 
 
