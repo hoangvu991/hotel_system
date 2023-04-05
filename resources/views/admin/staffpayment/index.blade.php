@@ -6,9 +6,9 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Staff</h6>
+            <h6 class="m-0 font-weight-bold text-primary">{{ $staff->full_name }} Payment</h6>
             <h6 class="m-0 font-weight-bold text-primary">
-                <a href="{{ url('/admin/staff/create') }}" class="float-right btn btn-success btn-sm">Add New</a>
+                <a href="{{ url('admin/staff/payment/'.$staff->id).'/add' }}" class="float-right btn btn-success btn-sm">Add New</a>
             </h6>
         </div>
         <div class="card-body">
@@ -20,9 +20,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Full Name</th>
-                            <th>Photo</th>
-                            <th>Department</th>
+                            <th>Amount</th>
+                            <th>Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -30,13 +29,10 @@
                         @foreach ($data as $item)
                         <tr>
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->full_name }}</td>
-                            <td><img src="{{ asset('images/'.$item->photo) }}" width="80px" alt="avatar"></td>
-                            <td>{{ $item->department->title }}</td>
+                            <td>{{ $item->amount }}</td>
+                            <td>{{ $item->payment_date }}</td>
                             <td>
-                                <a href="{{ url('admin/staff/payment/'.$item->id) }}" class="btn btn-primary btn-sm" ><i class="fa fa-credit-card"></i></a>
-                                <a href="{{ url('admin/staff/'.$item->id).'/edit' }}" class="btn btn-primary btn-sm" ><i class="fa fa-edit"></i></a>
-                                <a href="{{ url('admin/staff/'.$item->id).'/delete' }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                <a href="{{ url('admin/staff/payment/'.$item->id).'/delete' }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
