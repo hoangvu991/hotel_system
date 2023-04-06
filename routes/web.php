@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\StaffDepartment;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,17 +22,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', [HomeController::class, 'index']);
 
 //Login
 
-Route::get('/admin/login', [AdminController::class, 'login']);
+Route::get('/', [AdminController::class, 'login']);
 Route::post('/admin/login', [AdminController::class, 'check_login']);
 Route::get('/admin/logout', [AdminController::class, 'logout']);
-
-
 
 //Dashboard
 
@@ -53,7 +50,6 @@ Route::resource('admin/customer', CustomerController::class);
 Route::get('admin/customer/{id}/delete', [CustomerController::class, 'destroy']);
 
 Route::get('admin/roomtypeimage/delete/{id}', [RoomTypeController::class, 'delete_image']);
-
 
 //Department
 

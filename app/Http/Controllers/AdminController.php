@@ -26,12 +26,12 @@ class AdminController extends Controller
             return redirect('admin');
 
         } else {
-            return redirect('admin/login')->with('msg', 'Invalid username / password');
+            return redirect('/')->with('msg', 'Invalid username / password');
         }
     }
 
     public function logout() {
         session()->forget(['adminData']);
-        return redirect('admin');
+        return redirect('/');
     }
 }
